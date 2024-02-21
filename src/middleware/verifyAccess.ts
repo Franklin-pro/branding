@@ -1,23 +1,20 @@
-import Jwt, { JsonWebTokenError, TokenExpiredError, } from "jsonwebtoken";
+import Jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { errorMessage } from "../utils/errorMessage";
 import { NextFunction, Request, Response } from 'express';
-// import { isAnyArrayBuffer } from "util/types";
 
-// Define the structure of your user payload
 interface UserPayload {
     user: {
-        Role: string;
+        role: string;
+        id: number;
     };
     admin: {
-        Role: string;
+        role: string;
     };
 }
-
-declare module 'express-serve-static-core' {
+declare module 'express' {
     interface Request {
         user?: UserPayload;
     }
-  
 }
 
 const VerifyAccess = (passrole: string) => {
@@ -38,8 +35,9 @@ const VerifyAccess = (passrole: string) => {
             const verifyToken = Jwt.verify(token, secretKey) as UserPayload;
             req.user = verifyToken;
 
-            if (passrole === verifyToken.user.Role) {
-                return errorMessage(res, 201, `You don't have access`);
+            if (passrole !== verifyToken.user.role) {
+                
+                return errorMessage(res, 403, `You don't have access`);
             } else {
                 next();
             }
@@ -49,7 +47,7 @@ const VerifyAccess = (passrole: string) => {
             } else if (error instanceof JsonWebTokenError) {
                 return errorMessage(res, 401, `Invalid token`);
             }
-            return errorMessage(res, 500, `Server Error`);
+             return errorMessage(res, 500, `Server Error: ${(error as Error).message}`)
         }
     };
 };

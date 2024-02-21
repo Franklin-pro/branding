@@ -85,42 +85,43 @@ class blogsController{
             
         }
     }
-
-    // public static async Like(req: Request, res: Response): Promise<void> {
-    //     const idparams = req.params.id;
-    //     let userId: string;
-    //     try {
-    //         if (idparams.length !== 24) {
-    //             return errorMessage(res, 401, `Invalid id`);
-    //         }
+    public static async likeBlog(req: Request, res: Response): Promise<void> {
+        try {
+            const article = await Blogs.findById(req?.params?.id);
     
-    //         const blog = await Blogs.findById(idparams);
-    //         if (!blog) {
-    //             return errorMessage(res, 404, `Blog not found`);
-    //         }
+            if (!article) {
+               return errorMessage(res,201,`blogs not found`)
+            }
+            article.Likes++;
+            await article.save();
     
-    //         // Check if req.user is defined before accessing its properties
-    //         if (req.user && typeof req.user.user === 'string') {
-    //             userId = req.user.user;
-    //         } else {
-    //             userId = ''; 
-    //         }
+          return successMessage(res,200,`blogs liked`,article)
     
-    //         if (blog.Likes.includes(userId)) {
-    //             return errorMessage(res, 400, `You have already liked this blog`);
-    //         } else {
-    //             if (blog.DisLikes.includes(userId)) {
-    //                 blog.DisLikes.pull(userId);
-    //             }
-    //             blog.Likes.push(userId);
-    //             await blog.save();
-    //             return successMessage(res, 200, `Liked by user: ${userId}`,blog);
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         return errorMessage(res, 500, `Internal Server Error`);
-    //     }
-    // }
+        } catch (error) {
+            console.log('error from liked')
+        }
+    }
+    
+    public static async unlikeBlog(req: Request, res: Response): Promise<void> {
+        try {
+            const article = await Blogs.findById(req?.params?.id);
+            if (!article) {
+                return errorMessage(res, 201, `blogs not liked`);
+            } else {
+                
+                article.Likes = (article.Likes || 0) - 1;
+            }
+            if (article.Likes < 0) {
+                article.Likes = 0;
+            }
+            await article.save();
+            return successMessage(res, 200, `blogs unliked successfully`, article);
+        } catch (error) {
+            console.log('error from likes', error);
+        }
+    }
+    
+    
 }
 
 export { blogsController}
