@@ -87,15 +87,15 @@ class blogsController{
     }
     public static async likeBlog(req: Request, res: Response): Promise<void> {
         try {
-            const article = await Blogs.findById(req?.params?.id);
+            const blog = await Blogs.findById(req?.params?.id);
     
-            if (!article) {
+            if (!blog) {
                return errorMessage(res,201,`blogs not found`)
             }
-            article.Likes++;
-            await article.save();
+            blog.Likes++;
+            await blog.save();
     
-          return successMessage(res,200,`blogs liked`,article)
+          return successMessage(res,200,`blogs liked`,blog)
     
         } catch (error) {
             console.log('error from liked')
@@ -104,18 +104,18 @@ class blogsController{
     
     public static async unlikeBlog(req: Request, res: Response): Promise<void> {
         try {
-            const article = await Blogs.findById(req?.params?.id);
-            if (!article) {
+            const blog = await Blogs.findById(req?.params?.id);
+            if (!blog) {
                 return errorMessage(res, 201, `blogs not liked`);
             } else {
                 
-                article.Likes = (article.Likes || 0) - 1;
+                blog.Likes = (blog.Likes || 0) - 1;
             }
-            if (article.Likes < 0) {
-                article.Likes = 0;
+            if (blog.Likes < 0) {
+                blog.Likes = 0;
             }
-            await article.save();
-            return successMessage(res, 200, `blogs unliked successfully`, article);
+            await blog.save();
+            return successMessage(res, 200, `blogs unliked successfully`, blog);
         } catch (error) {
             console.log('error from likes', error);
         }

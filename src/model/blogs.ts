@@ -1,17 +1,16 @@
-import { NextFunction } from 'express';
 import mongoose, { Document, Model } from 'mongoose';
 
-// Define interface for the blog document
+
 interface IBlog extends Document {
   blogTitle: string;
   blogDescription: string;
   blogImage: string;
   CreatedDate: Date;
-  Likes: number; // Change the type to number
+  Likes: number; 
   disLikes: mongoose.Types.ObjectId[]; 
 }
 
-// Define blog schema
+
 const blogsSchema = new mongoose.Schema({
   blogTitle: {
     type: String,
@@ -30,16 +29,20 @@ const blogsSchema = new mongoose.Schema({
     default: Date.now
   },
   Likes: {
-    type: Number, // Change the type to Number
-    default: 0 // Set default value to 0
+    type: Number, 
+    default: 0 
   },
   disLikes: [{ 
     type: mongoose.Schema.Types.ObjectId,
     ref: "USER"
+  }],
+  comment: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment"
   }]
 });
 
-// Define Blogs model
+
 const Blogs: Model<IBlog> = mongoose.model<IBlog>("Blogs", blogsSchema);
 
 export { Blogs };

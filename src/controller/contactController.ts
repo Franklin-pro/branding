@@ -13,7 +13,7 @@ class contactController{
         try {
             const messages = await Contact.create({fullName,phone,email,message})
             if(messages){
-                return successMessage(res,200,`blogs posted successfully`,messages)
+                return successMessage(res,200,`message sent successfully`,messages)
             }else{
                 return errorMessage(res,204,`no blog posted`)
             }

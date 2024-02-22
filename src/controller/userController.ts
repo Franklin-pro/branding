@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { successMessage } from '../utils/successMessage';
 import { loginMessage } from '../utils/loginSuccess';
+import { success } from '../utils/sucess';
 
 class userController {
     public static async userCreate(req : Request,res: Response):Promise<void>{
@@ -16,10 +17,10 @@ class userController {
             }
             const hashPassword = bcrypt.hashSync(req.body.passWord,10)
 
-            const user = await USER.create({firstName,lastName,email,passWord:hashPassword,role})
+            const user = await USER.create({firstName,lastName,email,role,passWord:hashPassword})
 
             if (user) {
-                return successMessage(res,200,'user created successfully',user)
+               return success(res,201,`user created`)
            
 
 
@@ -79,7 +80,7 @@ class userController {
         try {
             const user = await USER.findByIdAndUpdate(userId,req.body,{new:true});
             if (user) {
-                return successMessage(res, 200, `User updated successfully`, user);
+                return success(res,201,`user updated successfully`)
             } else {
                 return errorMessage(res, 404, `No user found with ID ${userId}`);
             }
@@ -127,7 +128,7 @@ class userController {
             const token = jwt.sign({ user: user }, secretKey, { expiresIn: '1d' });
 
             if (token) {
-                return loginMessage(res, 200, `User login successful`, user, token);
+                return loginMessage(res, 200, `User login successful`, token);
             } else {
                 return errorMessage(res, 500, `Failed to generate token`);
             }
