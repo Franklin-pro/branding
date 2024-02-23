@@ -1,6 +1,6 @@
 import Jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { errorMessage } from "../utils/errorMessage";
-import { NextFunction, Request, Response } from 'express';
+import express, {Request,Response, NextFunction } from "express";
 
 interface UserPayload {
     user: {

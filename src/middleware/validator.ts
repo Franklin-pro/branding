@@ -1,4 +1,4 @@
-import { Request,Response, NextFunction, } from "express";
+import express, {Request,Response, NextFunction } from "express";
 import { validationResult, Result, check } from "express-validator";
 import { errorMessage } from "../utils/errorMessage";
 import { RequestHandler } from 'express';

@@ -1,4 +1,4 @@
-import { Request,Response } from "express";
+import express, { Request,Response } from "express";
 import { Blogs } from "../model/blogs";
 import { successMessage } from "../utils/successMessage";
 import { errorMessage } from "../utils/errorMessage";

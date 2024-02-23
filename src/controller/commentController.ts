@@ -1,8 +1,8 @@
-import { Request,Response } from "express";
+
+import express, { Request,Response } from "express";
 import {Comment} from "../model/comment";
 import { success } from "../utils/sucess";
 import { successMessage } from "../utils/successMessage";
-import { error } from "console";
 import { errorMessage } from "../utils/errorMessage";
 
 
