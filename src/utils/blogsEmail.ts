@@ -1,5 +1,4 @@
-
-import nodemailer from "nodemailer";
+import nodemailer, { SendMailOptions } from "nodemailer";
 
 interface UserInfo {
     id: number;
@@ -34,7 +33,7 @@ const blogEmail = async (userinfo: UserInfo, blogData: BlogInfo) => {
         },
     });
 
-    let mailoptions = {
+    let mailoptions: SendMailOptions = {
         from: email,
         to: userinfo.email,
         subject: `Hello!! ${userinfo.firstName}, We Received new blog`,
@@ -42,9 +41,9 @@ const blogEmail = async (userinfo: UserInfo, blogData: BlogInfo) => {
         you received<b> ${blogData.blogName} new blog</b></p>`
     };
 
-    transport.sendMail(mailoptions, function (err, info) {
+    transport.sendMail(mailoptions, function (err: Error | null, info: nodemailer.SentMessageInfo) {
         if (err) {
-            console.log(err);
+            console.error(err);
         } else {
             console.log(info);
         }
