@@ -1,7 +1,7 @@
 import express, {Request,Response, NextFunction } from "express";
 import { USER } from "../model/user";
 import { errorMessage } from "../utils/errorMessage";
-import { error } from "console";
+
 
 
 class dataChecker{
