@@ -16,7 +16,7 @@ if(!passWord){
 }
         try {
             if(req.body.passWord !== req.body.confirmPassword){
-                return errorMessage(res,204,'password and confirmPassword must be match')
+               return errorMessage(res,201,`password and confirmPassword must be matched`)
             }
             const hashPassword = bcrypt.hashSync(req.body.passWord,10)
 
