@@ -9,8 +9,11 @@ import { success } from '../utils/sucess';
 
 class userController {
     public static async userCreate(req : Request,res: Response):Promise<void>{
-        const{firstName,lastName,email,passWord,confirmPassword,role} = req.body
+        const{firstName,lastName,email,passWord,role} = req.body
 
+if(!passWord){
+    return errorMessage(res,400,`password is required`)
+}
         try {
             if(req.body.passWord !== req.body.confirmPassword){
                 return errorMessage(res,204,'password and confirmPassword must be match')
