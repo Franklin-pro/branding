@@ -1,5 +1,5 @@
 import express,{Router} from 'express'
-import commentController from '../controller/commentController'
+import commentController from '../controller/product.commentController'
 
 const router:Router = express.Router() 
 

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.use("/api/v1",userRoute)
+app.use("/",userRoute)
 
 // app.listen(port,()=>{
 //     console.log(`server runnng on ${port}`)
@@ -41,3 +41,4 @@ async function startServer() {
 
 startServer();
 
+export default app

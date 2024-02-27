@@ -1,5 +1,5 @@
 import express,{Router} from 'express';
-import { contactController } from '../controller/contactController';
+import { contactController } from '../controller/product.contactController';
 import VerifyAccess from '../middleware/verifyAccess';
 
 const router:Router = express.Router()

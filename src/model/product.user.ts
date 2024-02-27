@@ -15,7 +15,8 @@ email : {
 },
 passWord : {
     type:String,
-    required : true
+    required : true,
+    select : false
 },
 confirmPassword : {
     type:String,

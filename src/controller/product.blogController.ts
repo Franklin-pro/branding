@@ -1,11 +1,19 @@
 import express, { Request,Response } from "express";
-import { Blogs } from "../model/blogs";
+import { Blogs } from "../model/product.blogs";
 import { successMessage } from "../utils/successMessage";
 import { errorMessage } from "../utils/errorMessage";
 
+interface IBlog {
+    blogTitle: string;
+    blogDescription: string;
+    // Add other properties if needed
+}
+
 class blogsController{
     public static async postBlogs(req:Request,res:Response):Promise<void>{
-        const{blogTitle,blogDescription,blogImage}=req.body
+        
+const { blogTitle, blogDescription }: IBlog= req.body;
+const blogImage = req.file?.path || ""
 
         try {
             const blogs = await Blogs.create({blogTitle,blogDescription,blogImage})
