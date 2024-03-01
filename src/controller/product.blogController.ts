@@ -20,7 +20,7 @@ const blogImage = req.file?.path || ""
             if(blogs){
                 return successMessage(res,200,`blogs posted successfully`,blogs)
             }else{
-                return errorMessage(res,204,`no blog posted`)
+                return errorMessage(res,404,`no blog posted`)
             }
         } catch (error) {
             console.error("Error deleting user:", error);

@@ -8,7 +8,7 @@ const doc = {
     },
     servers: [
         {
-            url: 'https://branding-xokk.onrender.com',
+            url: 'http://localhost:3030/',
             description: 'local server'
         },
     ],

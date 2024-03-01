@@ -7,13 +7,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3030",
+      "url": "http://localhost:3030/",
       "description": "local server"
     }
   ],
   "paths": {
     "/user/": {
       "post": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -51,6 +54,9 @@
         }
       },
       "get": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -59,6 +65,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -69,6 +78,9 @@
     },
     "/user/{id}": {
       "get": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -87,6 +99,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -105,6 +120,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -125,6 +143,9 @@
     },
     "/user/login": {
       "post": {
+        "tags": [
+          "USERS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -152,6 +173,9 @@
     },
     "/contact/": {
       "post": {
+        "tags": [
+          "CONTACTS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -183,6 +207,9 @@
         }
       },
       "get": {
+        "tags": [
+          "CONTACTS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -193,6 +220,9 @@
     },
     "/contact/{id}": {
       "get": {
+        "tags": [
+          "CONTACTS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -211,6 +241,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "CONTACTS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -229,6 +262,9 @@
         }
       },
       "put": {
+        "tags": [
+          "CONTACTS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -249,6 +285,9 @@
     },
     "/blog/": {
       "post": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -257,6 +296,9 @@
         }
       },
       "get": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -265,6 +307,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -275,6 +320,9 @@
     },
     "/blog/post": {
       "post": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -285,6 +333,9 @@
     },
     "/blog/{id}": {
       "get": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -303,6 +354,9 @@
         }
       },
       "put": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -321,6 +375,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -341,6 +398,9 @@
     },
     "/blog/like/{id}": {
       "post": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -361,6 +421,9 @@
     },
     "/blog/unlike/{id}": {
       "post": {
+        "tags": [
+          "BLOGS API"
+        ],
         "description": "",
         "parameters": [
           {
@@ -381,6 +444,9 @@
     },
     "/comment/": {
       "post": {
+        "tags": [
+          "COMMENTS API"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -389,6 +455,9 @@
         }
       },
       "get": {
+        "tags": [
+          "COMMENTS API"
+        ],
         "description": "",
         "responses": {
           "default": {

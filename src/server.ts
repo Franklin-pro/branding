@@ -5,6 +5,9 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
+import { userController } from "./controller/product.userController";
+import { blogsController } from "./controller/product.blogController";
+import { contactController } from "./controller/product.contactController";
 
 
 const app = express();
@@ -16,11 +19,33 @@ app.use(cors({
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use('/blog', blogsRoutes);
-app.use("/login",userRoutes)
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send({message: "Welcome to our first API"});
 });
-app.use('/user', userRoutes);
 
+//users
+app.post("/",userController.userCreate)
+app.post("/login",userController.userCreate)
+app.get("/",userController.getAllUser)
+app.get("/:id",userController.getOneUser)
+app.delete("/:id",userController.deleteOneUser)
+app.delete("/",userController.deleteAll)
+
+//blogs
+
+app.post("/",blogsController.postBlogs)
+app.get("/:id", blogsController.getOneBlogs)
+app.get("/", blogsController.getAllBlogs)
+app.delete("/:id",blogsController.deleteOneBlogs)
+app.delete("/",blogsController.deleteAllBlogs)
+app.put("/:id",blogsController.updateBlogs)
+
+//contact me
+
+app.post("/",contactController.postMessage)
+// app.get("/:id", blogsController.getOneBlogs)
+// app.get("/", blogsController.getAllBlogs)
+// app.delete("/:id",blogsController.deleteOneBlogs)
+// app.delete("/",blogsController.deleteAllBlogs)
+// app.put("/:id",blogsController.updateBlogs)
 export default app;
