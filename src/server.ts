@@ -43,9 +43,9 @@ app.put("/:id",blogsController.updateBlogs)
 //contact me
 
 app.post("/",contactController.postMessage)
-// app.get("/:id", blogsController.getOneBlogs)
-// app.get("/", blogsController.getAllBlogs)
-// app.delete("/:id",blogsController.deleteOneBlogs)
-// app.delete("/",blogsController.deleteAllBlogs)
+app.get("/:id", contactController.getOneMessage)
+app.get("/", contactController.getAllMessage)
+app.delete("/:id",contactController.deleteOneMessage)
+app.delete("/",contactController.updateMessage)
 // app.put("/:id",blogsController.updateBlogs)
 export default app;

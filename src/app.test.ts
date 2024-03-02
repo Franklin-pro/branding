@@ -128,31 +128,27 @@ describe("blog testing", () =>{
            })
            expect(res.status).toEqual(400);
          });
-    //     it("Should return that the blog found", async () => {
-    //            const res = await request(app)
-    //            .get("/")
-    //            expect(res.status).toEqual(200);
-    // });
-    //     it("Should return that all blogs found", async () => {
-    //           const res = await request(app)
-    //           .get("/get")
-    //           expect(res.status).toEqual(204);
-    // });
-    //     it("Should return that the user deleted", async () => {
-    //           const res = await request(app)
-    //           .delete("/")
-    //           expect(res.status).toEqual(200);
-    // });
-    //     it("Should return that  all blog deleted", async () => {
-    //           const res = await request(app)
-    //           .delete("/")
-    //           expect(res.status).toEqual(200);
-    // });
-    //     it("Should return that the blog updated successfully", async () => {
-    //           const res = await request(app)
-    //           .patch("/")
-    //           expect(res.status).toEqual(404);
-    //     })
+        it("Should return that the message found", async () => {
+               const res = await request(app)
+               .get("/")
+               expect(res.status).toEqual(200);
+    });
+        it("Should return that all messages found", async () => {
+              const res = await request(app)
+              .get("/")
+              expect(res.status).toEqual(200);
+    });
+        it("Should return that the message deleted", async () => {
+              const res = await request(app)
+              .delete("/")
+              expect(res.status).toEqual(200);
+    });
+     
+        it("Should return that the message updated successfully", async () => {
+              const res = await request(app)
+              .patch("/")
+              expect(res.status).toEqual(404);
+        })
     });
 
   });
