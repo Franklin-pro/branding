@@ -108,26 +108,31 @@ class userController {
     public static async LOGIN(req: Request, res: Response): Promise<void> {
         const { email, passWord } = req.body;
         const secretKey = process.env.SECRET_KEY;
-
+    
         try {
             if (!secretKey) {
                 return errorMessage(res, 500, `Secret key is not defined`);
             }
-
+    
+            // Check if email is provided and is a non-empty string
+            if (!email || typeof email !== 'string') {
+                return errorMessage(res, 400, `Invalid email`);
+            }
+    
             const user = await USER.findOne({ email });
-
+    
             if (!user) {
                 return errorMessage(res, 401, `Invalid email or password`);
             }
-
+    
             const comparePassword = bcrypt.compareSync(passWord, user.passWord);
-
+    
             if (!comparePassword) {
                 return errorMessage(res, 401, `Invalid email or password`);
             }
-
+    
             const token = jwt.sign({ user: user }, secretKey, { expiresIn: '1d' });
-
+    
             if (token) {
                 return loginMessage(res, 200, `User login successful`, token);
             } else {
@@ -138,5 +143,6 @@ class userController {
             return errorMessage(res, 500, `Internal server error`);
         }
     }
+    
 }
 export { userController }
