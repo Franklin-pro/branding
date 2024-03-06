@@ -56,7 +56,7 @@ class contactController{
             if(message){
                 return errorMessage(res,200,`message deleted`)
             }else{
-                return errorMessage(res,200,`no message retrived`)
+                return errorMessage(res,400,`no message retrived`)
             }
         } catch (error) {
             
@@ -69,7 +69,7 @@ class contactController{
             if(message){
                 return successMessage(res,200,`message updated successfully`,message)
             }else{
-                return errorMessage(res,200,`no message updated`)
+                return errorMessage(res,400,`no message updated`)
             }
         } catch (error) {
             

@@ -23,16 +23,26 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">36.36% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>8/22</span>
+=======
+                <span class="strong">25% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>5/20</span>
+>>>>>>> origin/test
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">22.22% </span>
                 <span class="quiet">Branches</span>
+<<<<<<< HEAD
                 <span class='fraction'>2/9</span>
+=======
+                <span class='fraction'>0/8</span>
+>>>>>>> origin/test
             </div>
         
             
@@ -44,9 +54,15 @@
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">36.36% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>8/22</span>
+=======
+                <span class="strong">25% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>5/20</span>
+>>>>>>> origin/test
             </div>
         
             
@@ -115,11 +131,9 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,18 +163,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -168,6 +177,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,7 +185,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { errorMessage } from "../utils/errorMessage";
-import express, {Request,Response, NextFunction } from "express";
+import express, { Request, Response, NextFunction } from "express";
 &nbsp;
 interface UserPayload {
     user: {
@@ -186,48 +196,54 @@ interface UserPayload {
         role: string;
     };
 }
+&nbsp;
 declare module 'express' {
     interface Request {
         user?: UserPayload;
     }
 }
 &nbsp;
+<<<<<<< HEAD
 const VerifyAccess = (passrole: string) =&gt; {
     return (req: Request, res: Response, next: NextFunction) =&gt; {
         const token = req.headers["andela"];
 &nbsp;
         if (!token || <span class="branch-1 cbranch-no" title="branch not covered" >Array.isArray(token))</span> {
             return errorMessage(res, 401, `No valid token provided`);
+=======
+const verifyAccess = (requiredRole: string) =&gt; {
+    return <span class="fstat-no" title="function not covered" >async </span>(req: Request, res: Response, next: NextFunction) =&gt; {
+        const token = <span class="cstat-no" title="statement not covered" >req.headers["andela"];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!token || typeof token !== "string") {</span>
+<span class="cstat-no" title="statement not covered" >            return errorMessage(res, 401, "No valid token provided");</span>
+>>>>>>> origin/test
         }
 &nbsp;
-        const secretKey = <span class="cstat-no" title="statement not covered" >process.env.SECRET_KEY;</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (!secretKey) {</span>
-<span class="cstat-no" title="statement not covered" >            return errorMessage(res, 500, `Secret key is not defined`);</span>
-        }
+        const secretKey = <span class="cstat-no" title="statement not covered" >process.env.SECRET_KEY as string;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        try {</span>
-            const verifyToken = <span class="cstat-no" title="statement not covered" >Jwt.verify(token, secretKey) as UserPayload;</span>
-<span class="cstat-no" title="statement not covered" >            req.user = verifyToken;</span>
+            const decodedToken = <span class="cstat-no" title="statement not covered" >Jwt.verify(token, secretKey) as UserPayload;</span>
+<span class="cstat-no" title="statement not covered" >            req.user = decodedToken;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (passrole !== verifyToken.user.role) {</span>
-                
-<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 403, `You don't have access`);</span>
-            } else {
-<span class="cstat-no" title="statement not covered" >                next();</span>
+<span class="cstat-no" title="statement not covered" >            <span class="missing-if-branch" title="if path not taken" >I</span>if (requiredRole !== decodedToken.user.role) {</span>
+<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 403, "Insufficient permissions");</span>
             }
-        } catch (error) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            next();</span>
+        } catch (error: any) {
 <span class="cstat-no" title="statement not covered" >            if (error instanceof TokenExpiredError) {</span>
-<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 401, `Token expired`);</span>
-            } else <span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="if path not taken" >I</span>if (error instanceof JsonWebTokenError) {</span>
-<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 401, `Invalid token`);</span>
+<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 401, "Token expired");</span>
+            } else <span class="cstat-no" title="statement not covered" >if (error instanceof JsonWebTokenError) {</span>
+<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 401, "Invalid token");</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                return errorMessage(res, 500, `Server Error: ${(error as Error).message}`);</span>
             }
-<span class="cstat-no" title="statement not covered" >             return errorMessage(res, 500, `Server Error: ${(error as Error).message}`)</span>
         }
     };
 };
 &nbsp;
-export default VerifyAccess;
+export default verifyAccess;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -235,7 +251,11 @@ export default VerifyAccess;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+<<<<<<< HEAD
                 at 2024-02-29T08:16:57.645Z
+=======
+                at 2024-03-01T10:50:53.215Z
+>>>>>>> origin/test
             </div>
         <script src="../../prettify.js"></script>
         <script>
