@@ -64,32 +64,46 @@ class userController{
     };
     public static async login(req: Request, res: Response): Promise<void> {
         const { email, passWord } = req.body;
-        const secretKey = 'mbabazi';
+        const secretKey = process.env.SECRET_KEY;
+    
         try {
-            if(!secretKey){
-                return errorMessage(res, 404, 'secret key not defined');
+            if (!secretKey) {
+                return errorMessage(res, 500, `Secret key is not defined`);
             }
-            const user = await USER.findOne({email});
-            if(!user){
-                return errorMessage(res, 401, 'Invalid email ');
-            }else{
-                const comparePassword = bcrypt.compareSync(passWord, user.passWord);
-                if(comparePassword){
-                    return successMessage(res, 402, 'invalid password', user);
-                }else{
-                    const token = jwt.sign({user: user}, secretKey, {expiresIn: '300d'})
-                    if(token){
-                        return loginMessage(res, 201, 'user login successfully', token)
-                    }else{
-                        return errorMessage(res, 401, 'token not found');
-                    }
-                }
+    
+            
+            if (!email || typeof email !== 'string') {
+                return errorMessage(res, 400, `Invalid email`);
             }
-        }catch (error) {
-            console.log(error);
-            return errorMessage(res, 500, 'internal server error');
-        };
-    };
+    
+            const user = await USER.findOne({ email });
+    
+            if (!user) {
+                return errorMessage(res, 401, `Invalid email or password`);
+            }
+    
+          
+            const hashedPassword = user.passWord;
+    
+            
+            const comparePassword = bcrypt.compareSync(passWord, hashedPassword);
+    
+            if (!comparePassword) {
+                return errorMessage(res, 401, `Invalid email or password`);
+            }
+    
+            const token = jwt.sign({ user: user }, secretKey, { expiresIn: '1d' });
+    
+            if (token) {
+                return loginMessage(res, 200, `User login successful`, token);
+            } else {
+                return errorMessage(res, 500, `Failed to generate token`);
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+            return errorMessage(res, 500, `Internal server error`);
+        }
+    }
 };
 export default userController;
 
