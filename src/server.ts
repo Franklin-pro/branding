@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
-import { userController } from "./controller/product.userController";
+import userController from "./controller/product.userController";
 import { blogsController } from "./controller/product.blogController";
 import { contactController } from "./controller/product.contactController";
 
@@ -24,12 +24,12 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 //users
-app.post("/",userController.userCreate)
-app.post("/login",userController.userCreate)
-app.get("/",userController.getAllUser)
-app.get("/:id",userController.getOneUser)
-app.delete("/:id",userController.deleteOneUser)
-app.delete("/",userController.deleteAll)
+app.post("/",userController.createUser)
+app.post("/login",userController.login)
+app.get("/",userController.getAllUsers)
+app.get("/:id",userController.getUser)
+app.delete("/:id",userController.deleteUser)
+app.delete("/",userController.deleteAllUser)
 
 //blogs
 
