@@ -11,9 +11,6 @@ class userController {
     public static async userCreate(req : Request,res: Response):Promise<void>{
         const{firstName,lastName,email,passWord,role} = req.body
 
-if(!passWord){
-    return errorMessage(res,400,`password is required`)
-}
         try {
             if(req.body.passWord !== req.body.confirmPassword){
                return errorMessage(res,201,`password and confirmPassword must be matched`)
