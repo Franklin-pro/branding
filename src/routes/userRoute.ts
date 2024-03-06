@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../index'; 
-import userController from '../controller/product.userController';
+import userController from "../controller/product.userController"
 import VerifyAccess from '../middleware/verifyAccess';
 import express,{ Router } from 'express';
 import { dataChecker } from '../middleware/dataCheker';
