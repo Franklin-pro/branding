@@ -12,9 +12,7 @@ class userController {
         const{firstName,lastName,email,passWord,role} = req.body
 
         try {
-            if(!passWord){
-                return errorMessage (res,401,`password is required`)
-            }
+          
             if(req.body.passWord !== req.body.confirmPassword){
                return errorMessage(res,401,`password and confirmPassword must be matched`)
             }
