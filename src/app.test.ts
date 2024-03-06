@@ -18,3 +18,22 @@ describe("App testing", () =>{
         expect(res.status).toEqual(200);
     });
 });
+describe("blogs testing", () =>{
+  it("Should return the blog is found", async () => {
+      const res = await request(app).get("/blog");
+      expect(res.status).toEqual(200);
+  });
+});
+describe("user testing", () =>{
+  it("Should return that the user created successfully", async () => {
+         const res = await request(app).get("/user");
+         expect(res.status).toEqual(200);
+       });
+     });
+
+     describe("login testing", () =>{
+      it("Should return that the user successfully logged in", async () => {
+             const res = await request(app).get("/user/login");
+             expect(res.status).toEqual(200);
+           });
+         });

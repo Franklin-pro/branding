@@ -8,7 +8,7 @@ import { validator } from '../middleware/validator';
 const router :Router = express.Router()
 
 
-router.post("/",dataChecker.inputIsEmpty,dataChecker.EmailExist,validator.userAccount(),validator.InputValidator,userController.userCreate)
+router.post("/",dataChecker.inputIsEmpty,dataChecker.EmailExist,userController.userCreate)
 router.get("/",VerifyAccess("admin"), userController.getAllUser);
 router.get("/:id", userController.getOneUser);
 router.delete("/:id",userController.deleteOneUser)
