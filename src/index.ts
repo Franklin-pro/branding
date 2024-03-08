@@ -37,7 +37,7 @@ async function startServer() {
     console.log(`The application is listening on port ${port}!`);
 
     // Connect to the database
-    const connect_database_mongoDb = "mongodb+srv://franklinprogrammer:frank123@frank.badhlha.mongodb.net/brand"; 
+    const connect_database_mongoDb = "mongodb+srv://frank:frank@king.dizpopl.mongodb.net/?retryWrites=true&w=majority&appName=king"; 
     try {
         await mongoose.connect(connect_database_mongoDb);
         console.log("Connected to database");

@@ -25,7 +25,7 @@ app.get("/", (req: Request, res: Response) => {
 
 //users
 app.post("/",userController.createUser)
-app.post("/login",userController.login)
+app.post("/login",userController.LOGIN)
 app.get("/",userController.getAllUsers)
 app.get("/:id",userController.getUser)
 app.delete("/:id",userController.deleteUser)

@@ -5,10 +5,11 @@ import { RequestHandler } from 'express';
 
 
 class validator{
-    public static async InputValidator(req: Request, res: Response, next: NextFunction): Promise<void> {
+    public static async InputValidator(req: Request, res: Response, next: NextFunction){
         const errors = validationResult(req);
+        console.log(errors)
         if (!errors.isEmpty()) {
-            errors.array().map((error) => {
+            return errors.array().map((error) => {
                 errorMessage(res, 401, error.msg);
             });
         } else {
@@ -18,10 +19,9 @@ class validator{
 
     public static userAccount(): RequestHandler[] {
         return [
-            check("firstName", "Please provide a valid first name without numbers").trim().isAlpha(),
-            check("lastName", "Please provide a valid last name without numbers").trim().isAlpha(),
+            check("userName", "Please provide a valid username without numbers").trim().isAlpha(),
             check("email", "Please provide a valid email address").trim().isEmail(),
-            check("passWord", "Please provide a strong password starting with a capital letter, mixing numbers and symbols").isStrongPassword()
+            check("password", "Please provide a strong password starting with a capital letter, mixing numbers and symbols").isStrongPassword()
         ];
     }
    

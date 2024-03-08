@@ -12,8 +12,8 @@ interface IBlog {
 class blogsController{
     public static async postBlogs(req:Request,res:Response):Promise<void>{
         
-const { blogTitle, blogDescription }: IBlog= req.body;
-const blogImage = req.file?.path || ""
+const { blogTitle, blogDescription,blogImage }= req.body;
+
 
         try {
             const blogs = await Blogs.create({blogTitle,blogDescription,blogImage})
