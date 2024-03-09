@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, response } from 'express';
 import { USER, IUser } from '../model/product.user';
 import { successMessage } from '../utils/successMessage';
 import { errorMessage } from '../utils/errorMessage';
@@ -9,15 +9,15 @@ import { loginMessage } from '../utils/loginSuccess';
 class userController{
     public static async createUser(req: Request, res: Response): Promise<void> {
         try {
-            const { userName, email, password, confirmPassword, role } = req.body;
+            const { username, email, password, confirmPassword, role } = req.body;
             console.log('Request body:', req.body); // Log the entire request body to inspect the data being received
     
             if (!password) {
                 return errorMessage(res, 400, 'Password is required');
             }
     
-            if (!userName) {
-                return errorMessage(res, 400, 'Username is required');
+            if (!username) {
+                return errorMessage(res, 400, 'username is required');
             }
     
             const existingUserWithEmail = await USER.findOne({ email });
@@ -25,19 +25,21 @@ class userController{
                 return errorMessage(res, 400, 'User with this email already exists');
             }
     
-            const existingUserWithUsername = await USER.findOne({ userName });
-            if (existingUserWithUsername) {
-                return errorMessage(res, 400, 'Username is already taken');
+            const existingUserWithusername = await USER.findOne({ username });
+            if (existingUserWithusername) {
+                return errorMessage(res, 400, 'username is already taken');
             }
     
             const hashPassword = bcrypt.hashSync(password, 10);
-            const user = await USER.create({ userName, email, password: hashPassword, role });
+             const user = await USER.create({ username:username, email:email, password: hashPassword, role:role });
     
             if (user) {
                 return successMessage(res, 200, 'User created', user);
             } else {
                 return errorMessage(res, 404, 'Failed to create user');
             }
+            console.log({ username:username, email:email, password: hashPassword, role:"user" })
+            return successMessage(res,200,`ok`,"ddd")
         } catch (error) {
             console.error('Error during user creation:', error);
             return errorMessage(res, 500, 'Internal Server Error');
@@ -101,7 +103,7 @@ class userController{
               return res.status(401).json({ error: 'Incorrect password' });
             }
             const token = jwt.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'franklin');
-            return res.status(200).json({ status:"success", user: { _id: authUser._id, userName: authUser.userName, email: authUser.email, role:authUser.role}, token });
+            return res.status(200).json({ status:"success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role:authUser.role}, token });
           }
           else {
               return res.status(500).json({ status:"fail", error: 'User password not available' });

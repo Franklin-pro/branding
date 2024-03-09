@@ -12,24 +12,26 @@ const bcryptjs_1 = require("bcryptjs");
 class userController {
     static async createUser(req, res) {
         try {
-            const { userName, email, password, confirmPassword, role } = req.body;
+            console.log("erro")
+            const { username, email, password, confirmPassword, role } = req.body;
             console.log('Request body:', req.body);
             if (!password) {
                 return (0, errorMessage_1.errorMessage)(res, 400, 'Password is required');
             }
-            if (!userName) {
-                return (0, errorMessage_1.errorMessage)(res, 400, 'Username is required');
+            if (!username) {
+                return (0, errorMessage_1.errorMessage)(res, 400, 'username is required');
             }
             const existingUserWithEmail = await product_user_1.USER.findOne({ email });
             if (existingUserWithEmail) {
                 return (0, errorMessage_1.errorMessage)(res, 400, 'User with this email already exists');
             }
-            const existingUserWithUsername = await product_user_1.USER.findOne({ userName });
-            if (existingUserWithUsername) {
-                return (0, errorMessage_1.errorMessage)(res, 400, 'Username is already taken');
+            const existingUserWithusername = await product_user_1.USER.findOne({ username });
+            if (existingUserWithusername) {
+                return (0, errorMessage_1.errorMessage)(res, 400, 'username is already taken');
             }
             const hashPassword = bcrypt_1.default.hashSync(password, 10);
-            const user = await product_user_1.USER.create({ userName, email, password: hashPassword, role });
+            // const user = await product_user_1.USER.create();
+            console.log({ username: username, email:email, password: hashPassword, role:role })
             if (user) {
                 return (0, successMessage_1.successMessage)(res, 200, 'User created', user);
             }
@@ -111,7 +113,7 @@ class userController {
                     return res.status(401).json({ error: 'Incorrect password' });
                 }
                 const token = jsonwebtoken_1.default.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'franklin');
-                return res.status(200).json({ status: "success", user: { _id: authUser._id, userName: authUser.userName, email: authUser.email, role: authUser.role }, token });
+                return res.status(200).json({ status: "success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role: authUser.role }, token });
             }
             else {
                 return res.status(500).json({ status: "fail", error: 'User password not available' });

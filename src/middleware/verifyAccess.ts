@@ -3,13 +3,9 @@ import { errorMessage } from "../utils/errorMessage";
 import express, { Request, Response, NextFunction } from "express";
 
 interface UserPayload {
-    user: {
-        role: string;
-        id: number;
-    };
-    admin: {
-        role: string;
-    };
+  userId: string,
+  email:string,
+  role:string
 }
 
 declare module 'express' {
@@ -29,10 +25,12 @@ const verifyAccess = (requiredRole: string) => {
         const secretKey = process.env.SECRET_KEY as string;
 
         try {
+            
             const decodedToken = Jwt.verify(token, secretKey) as UserPayload;
+            console.log(decodedToken)
             req.user = decodedToken;
 
-            if (requiredRole !== decodedToken.user.role) {
+            if (requiredRole !== decodedToken?.role) {
                 return errorMessage(res, 403, "Insufficient permissions");
             }
 

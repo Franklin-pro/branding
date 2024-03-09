@@ -33,13 +33,17 @@ app.use("/",userRoute)
 
 
 async function startServer() {
-    await app.listen(port);
-    console.log(`The application is listening on port ${port}!`);
+   
 
     // Connect to the database
-    const connect_database_mongoDb = "mongodb+srv://frank:frank@king.dizpopl.mongodb.net/?retryWrites=true&w=majority&appName=king"; 
+    const connect_database_mongoDb = "mongodb+srv://frank:frank@king.dizpopl.mongodb.net/test?retryWrites=true&w=majority&appName=king"; 
     try {
-        await mongoose.connect(connect_database_mongoDb);
+       mongoose.connect(connect_database_mongoDb)
+        .then(()=>{
+             app.listen(port);
+            console.log(`The application is listening on port ${port}!`);
+        })
+
         console.log("Connected to database");
     } catch (error) {
         console.error("Database connection failed", error);
