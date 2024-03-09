@@ -6,8 +6,8 @@ import verifyAccess from '../middleware/verifyAccess';
 
 const router:Router = express.Router();
 
-router.post("/",verifyAccess,blogsController.postBlogs) 
-router.post("/post",verifyAccess,upload.single("image"),blogsController.postBlogs)
+router.post("/",blogsController.postBlogs) 
+router.post("/post",upload.single("image"),blogsController.postBlogs)
 router.get("/",blogsController.getAllBlogs) 
 router.get("/:id",blogsController.getOneBlogs) 
 router.put("/:id",verifyAccess("admin"),blogsController.updateBlogs) 

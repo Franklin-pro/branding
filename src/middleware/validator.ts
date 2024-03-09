@@ -19,7 +19,6 @@ class validator{
 
     public static userAccount(): RequestHandler[] {
         return [
-            check("userName", "Please provide a valid username without numbers").trim().isAlpha(),
             check("email", "Please provide a valid email address").trim().isEmail(),
             check("password", "Please provide a strong password starting with a capital letter, mixing numbers and symbols").isStrongPassword()
         ];

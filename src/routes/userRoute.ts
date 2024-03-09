@@ -9,7 +9,7 @@ const router :Router = express.Router()
 
 
 router.post("/",dataChecker.inputIsEmpty,dataChecker.EmailExist,validator.userAccount(),validator.InputValidator,userController.createUser)
-router.get("/",VerifyAccess("admin"), userController.getAllUsers);
+router.get("/", userController.getAllUsers);
 router.get("/:id", userController.getUser);
 router.delete("/:id",userController.deleteUser)
 router.patch("/:id",userController.updateUser)

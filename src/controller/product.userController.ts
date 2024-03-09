@@ -8,19 +8,43 @@ import { compare } from 'bcryptjs';
 import { loginMessage } from '../utils/loginSuccess';
 class userController{
     public static async createUser(req: Request, res: Response): Promise<void> {
-        const { userName, email, password,confirmPassword, role } = req.body;
-        console.log(req.body)
-        if (!password) {
-            return errorMessage(res, 400, 'Password is required');
+        try {
+            const { userName, email, password, confirmPassword, role } = req.body;
+            console.log('Request body:', req.body); // Log the entire request body to inspect the data being received
+    
+            if (!password) {
+                return errorMessage(res, 400, 'Password is required');
+            }
+    
+            if (!userName) {
+                return errorMessage(res, 400, 'Username is required');
+            }
+    
+            const existingUserWithEmail = await USER.findOne({ email });
+            if (existingUserWithEmail) {
+                return errorMessage(res, 400, 'User with this email already exists');
+            }
+    
+            const existingUserWithUsername = await USER.findOne({ userName });
+            if (existingUserWithUsername) {
+                return errorMessage(res, 400, 'Username is already taken');
+            }
+    
+            const hashPassword = bcrypt.hashSync(password, 10);
+            const user = await USER.create({ userName, email, password: hashPassword, role });
+    
+            if (user) {
+                return successMessage(res, 200, 'User created', user);
+            } else {
+                return errorMessage(res, 404, 'Failed to create user');
+            }
+        } catch (error) {
+            console.error('Error during user creation:', error);
+            return errorMessage(res, 500, 'Internal Server Error');
         }
-        const hashPassword = bcrypt.hashSync(password, 10);
-        const user = await  USER.create({ userName, email, password: hashPassword, role });
-        if (user) {
-            return successMessage(res, 200, 'User created', user);
-        }else {
-            return errorMessage(res, 404, 'Failed to create user');
-        };
-    };
+    }
+    
+    
     public static async  getAllUsers(req:Request, res:Response):Promise<void>{
         const user = await  USER.find();
         if (user){
@@ -76,8 +100,8 @@ class userController{
             if (!passwordMatch) {
               return res.status(401).json({ error: 'Incorrect password' });
             }
-            const token = jwt.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'mbabazi');
-            return res.status(200).json({ status:"success", user: { _id: authUser._id, username: authUser.username, email: authUser.email, role:authUser.role}, token });
+            const token = jwt.sign({ userId: authUser._id, email: authUser.email, role: authUser.role }, 'franklin');
+            return res.status(200).json({ status:"success", user: { _id: authUser._id, userName: authUser.userName, email: authUser.email, role:authUser.role}, token });
           }
           else {
               return res.status(500).json({ status:"fail", error: 'User password not available' });

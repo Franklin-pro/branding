@@ -6,16 +6,15 @@ import { errorMessage } from "../utils/errorMessage";
 
 class dataChecker{
     public static async inputIsEmpty(req:Request, res:Response,next : NextFunction) :Promise<void> {
-    const {firstName,lastName,email,passWord,confirmPassword} = req.body
+    const {username,email,password,confirmPassword} = req.body
 
-    if(firstName ==""){
+    if(username ==""){
         return errorMessage(res,201,`firstName is empty please fill`)
-    }else if(lastName == ""){
-        return errorMessage(res,201,`lastName is empty please fill`)
-    }else if(email == ""){
+    }
+    else if(email == ""){
         return errorMessage(res,201,`email is empty please fill`)
     }
-    else if(passWord == ""){
+    else if(password == ""){
         return errorMessage(res,201,`password is empty please fill`)
     }
     else if(confirmPassword == ""){
