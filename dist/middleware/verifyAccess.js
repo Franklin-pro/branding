@@ -34,8 +34,9 @@ const verifyAccess = (requiredRole) => {
         const secretKey = process.env.SECRET_KEY;
         try {
             const decodedToken = jsonwebtoken_1.default.verify(token, secretKey);
+            console.log(decodedToken);
             req.user = decodedToken;
-            if (requiredRole !== decodedToken.user.role) {
+            if (requiredRole !== decodedToken?.role) {
                 return (0, errorMessage_1.errorMessage)(res, 403, "Insufficient permissions");
             }
             next();

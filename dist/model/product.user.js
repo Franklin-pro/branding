@@ -28,6 +28,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const userSchema = new mongoose_1.Schema({
     username: {
         type: String,
+        unique: true
     },
     email: {
         type: String,

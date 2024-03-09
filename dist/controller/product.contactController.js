@@ -49,8 +49,9 @@ class contactController {
         }
     }
     static async deleteOneMessage(req, res) {
+        const messageId = req.params.id;
         try {
-            const message = await contact_1.Contact.deleteMany();
+            const message = await contact_1.Contact.findByIdAndDelete(messageId);
             if (message) {
                 return (0, errorMessage_1.errorMessage)(res, 200, `message deleted`);
             }

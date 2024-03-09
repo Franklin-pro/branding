@@ -12,7 +12,6 @@ const bcryptjs_1 = require("bcryptjs");
 class userController {
     static async createUser(req, res) {
         try {
-            console.log("erro")
             const { username, email, password, confirmPassword, role } = req.body;
             console.log('Request body:', req.body);
             if (!password) {
@@ -30,14 +29,15 @@ class userController {
                 return (0, errorMessage_1.errorMessage)(res, 400, 'username is already taken');
             }
             const hashPassword = bcrypt_1.default.hashSync(password, 10);
-            // const user = await product_user_1.USER.create();
-            console.log({ username: username, email:email, password: hashPassword, role:role })
+            const user = await product_user_1.USER.create({ username: username, email: email, password: hashPassword, role: role });
             if (user) {
                 return (0, successMessage_1.successMessage)(res, 200, 'User created', user);
             }
             else {
                 return (0, errorMessage_1.errorMessage)(res, 404, 'Failed to create user');
             }
+            console.log({ username: username, email: email, password: hashPassword, role: "user" });
+            return (0, successMessage_1.successMessage)(res, 200, `ok`, "ddd");
         }
         catch (error) {
             console.error('Error during user creation:', error);

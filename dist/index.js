@@ -21,11 +21,13 @@ app.use((0, cors_1.default)());
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_output_json_1.default));
 app.use("/", index_1.router);
 async function startServer() {
-    await app.listen(port);
-    console.log(`The application is listening on port ${port}!`);
-    const connect_database_mongoDb = "mongodb+srv://frank:frank@king.dizpopl.mongodb.net/?retryWrites=true&w=majority&appName=king";
+    const connect_database_mongoDb = "mongodb+srv://frank:frank@king.dizpopl.mongodb.net/test?retryWrites=true&w=majority&appName=king";
     try {
-        await mongoose_1.default.connect(connect_database_mongoDb);
+        mongoose_1.default.connect(connect_database_mongoDb)
+            .then(() => {
+            app.listen(port);
+            console.log(`The application is listening on port ${port}!`);
+        });
         console.log("Connected to database");
     }
     catch (error) {
