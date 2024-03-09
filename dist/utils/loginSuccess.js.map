@@ -1,0 +1,1 @@
+{"version":3,"file":"loginSuccess.js","sourceRoot":"","sources":["../../src/utils/loginSuccess.ts"],"names":[],"mappings":";;;AAEA,MAAM,YAAY,GAAG,CAAC,GAAa,EAAE,MAAc,EAAE,OAAe,EAAC,KAAS,EAAQ,EAAE;IACpF,GAAG,CAAC,MAAM,CAAC,MAAM,CAAC,CAAC,IAAI,CAAC;QACpB,OAAO,EAAE,OAAO;QAChB,KAAK,EAAC,KAAK;KAGd,CAAC,CAAC;AACP,CAAC,CAAA;AAEQ,oCAAY"}
