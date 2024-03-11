@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<coverage generated="1709194617664" clover="3.2.0">
-  <project timestamp="1709194617664" name="All files">
-    <metrics statements="260" coveredstatements="102" conditionals="66" coveredconditionals="2" methods="29" coveredmethods="7" elements="355" coveredelements="111" complexity="0" loc="260" ncloc="260" packages="7" files="15" classes="15"/>
-    <package name="src">
-      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="server.ts" path="/home/hp/Desktop/branding/src/server.ts">
-        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-=======
-<coverage generated="1709396765891" clover="3.2.0">
-  <project timestamp="1709396765892" name="All files">
-    <metrics statements="481" coveredstatements="209" conditionals="144" coveredconditionals="40" methods="55" coveredmethods="17" elements="680" coveredelements="266" complexity="0" loc="481" ncloc="481" packages="8" files="22" classes="22"/>
+<coverage generated="1710164069302" clover="3.2.0">
+  <project timestamp="1710164069303" name="All files">
+    <metrics statements="481" coveredstatements="199" conditionals="144" coveredconditionals="36" methods="55" coveredmethods="15" elements="680" coveredelements="250" complexity="0" loc="481" ncloc="481" packages="8" files="22" classes="22"/>
     <package name="dist">
       <metrics statements="36" coveredstatements="36" conditionals="7" coveredconditionals="6" methods="2" coveredmethods="2"/>
       <file name="server.js" path="/home/kayitare/Desktop/branding/dist/server.js">
@@ -55,7 +45,7 @@
       </file>
     </package>
     <package name="dist.controller">
-      <metrics statements="176" coveredstatements="42" conditionals="65" coveredconditionals="12" methods="21" coveredmethods="4"/>
+      <metrics statements="176" coveredstatements="38" conditionals="65" coveredconditionals="10" methods="21" coveredmethods="4"/>
       <file name="product.blogController.js" path="/home/kayitare/Desktop/branding/dist/controller/product.blogController.js">
         <metrics statements="62" coveredstatements="6" conditionals="22" coveredconditionals="0" methods="8" coveredmethods="0"/>
 >>>>>>> origin/test
@@ -166,7 +156,7 @@
         <line num="80" count="1" type="stmt"/>
       </file>
       <file name="product.userController.js" path="/home/kayitare/Desktop/branding/dist/controller/product.userController.js">
-        <metrics statements="77" coveredstatements="30" conditionals="33" coveredconditionals="12" methods="8" coveredmethods="4"/>
+        <metrics statements="77" coveredstatements="26" conditionals="33" coveredconditionals="10" methods="8" coveredmethods="4"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
         <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
         <line num="5" count="1" type="stmt"/>
@@ -186,10 +176,10 @@
         <line num="22" count="2" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="40" count="0" type="stmt"/>
@@ -220,9 +210,9 @@
         <line num="92" count="0" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
         <line num="97" count="5" type="stmt"/>
-        <line num="98" count="5" type="stmt"/>
-        <line num="99" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="100" count="5" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="100" count="0" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
         <line num="108" count="0" type="stmt"/>
@@ -283,13 +273,13 @@
       </file>
     </package>
     <package name="dist.utils">
-      <metrics statements="20" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <metrics statements="20" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="errorMessage.js" path="/home/kayitare/Desktop/branding/dist/utils/errorMessage.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="10" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="loginSuccess.js" path="/home/kayitare/Desktop/branding/dist/utils/loginSuccess.js">
@@ -309,11 +299,11 @@
         <line num="10" count="1" type="stmt"/>
       </file>
       <file name="sucess.js" path="/home/kayitare/Desktop/branding/dist/utils/sucess.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
     </package>
@@ -358,11 +348,6 @@
       </file>
     </package>
     <package name="src.controller">
-<<<<<<< HEAD
-      <metrics statements="133" coveredstatements="18" conditionals="41" coveredconditionals="0" methods="15" coveredmethods="2"/>
-      <file name="product.blogController.ts" path="/home/hp/Desktop/branding/src/controller/product.blogController.ts">
-        <metrics statements="60" coveredstatements="6" conditionals="20" coveredconditionals="0" methods="8" coveredmethods="1"/>
-=======
       <metrics statements="168" coveredstatements="34" conditionals="51" coveredconditionals="4" methods="20" coveredmethods="3"/>
       <file name="product.blogController.ts" path="/home/kayitare/Desktop/branding/src/controller/product.blogController.ts">
         <metrics statements="60" coveredstatements="4" conditionals="20" coveredconditionals="0" methods="8" coveredmethods="0"/>
@@ -472,7 +457,6 @@
       </file>
       <file name="product.userController.ts" path="/home/kayitare/Desktop/branding/src/controller/product.userController.ts">
         <metrics statements="73" coveredstatements="26" conditionals="21" coveredconditionals="4" methods="7" coveredmethods="3"/>
->>>>>>> origin/test
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -488,10 +472,10 @@
         <line num="19" count="2" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="41" count="0" type="stmt"/>
@@ -522,9 +506,9 @@
         <line num="91" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
         <line num="96" count="5" type="stmt"/>
-        <line num="97" count="5" type="stmt"/>
-        <line num="99" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="100" count="5" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="99" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="100" count="0" type="stmt"/>
         <line num="102" count="0" type="stmt"/>
         <line num="105" count="0" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
@@ -689,11 +673,11 @@
         <line num="9" count="1" type="stmt"/>
 =======
     <package name="src.utils">
-      <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="errorMessage.ts" path="/home/kayitare/Desktop/branding/src/utils/errorMessage.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="10" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
 >>>>>>> origin/test
       </file>
@@ -725,9 +709,8 @@
         <line num="2" count="1" type="stmt"/>
 =======
       <file name="sucess.ts" path="/home/kayitare/Desktop/branding/src/utils/sucess.ts">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
->>>>>>> origin/test
         <line num="4" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
       </file>
